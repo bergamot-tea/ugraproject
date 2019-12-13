@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block menu %}
+
+  <!-- Left Buttom -->
+ <a class="menu-toggle-left rounded" href="/">
+   <i class="fas fa-home"></i>
+  </a>
+
+  <!-- Navigation -->
+
+  <a class="menu-toggle rounded" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a class="js-scroll-trigger" href="#page-top">
+            <h4 class="mb-1">Overwatch Tournaments</h4>
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#page-top">На главную</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#about">В ближайшее время</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#services">Статистика</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#portfolio">Найти информацию</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#contact">Помощь</a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a class="js-scroll-trigger" href="#contact">Блок-схема</a>
+      </li>
+    </ul>
+  </nav>
+
+
+{% endblock %}
+
+
+{% block content %}
+
+  <!-- Header -->
+  <header class="masthead d-flex">
+
+
+<div class="container text-center my-auto">
+  <div class="row">
+    <div class="col-sm">
+    </div>
+
+   <div class="col-sm">
+        <form class="form-group align-items-center" method="post" action=".">
+
+            {% csrf_token %}
+<!--           {{ form.as_p }}   если выводить всю форму-->
+
+            <h6>Логин:</h6>
+            {{ form.username }}
+            <br>
+
+            <h6>Пароль:</h6>
+            {{ form.password }}
+            <br>
+
+            <input type="submit" class="btn btn-primary" value="Войти">
+            <br><br>
+
+            <h6 class="lead mb-5">У тебя все еще нет аккаунта? <a href="/signup"><strong>Зарегистрируй!</strong></a></h6>
+            <h6 class="lead mb-5">Для этого <a href="{{ goto_blizzard }}"><strong>авторизуйся в Battlenet!</strong></a></h6>
+        </form>
+    </div>
+
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+
+
+
+    </div>
+
+    <div class="overlay">    </div>
+  </header>
+
+
+
+
+{% endblock %}
