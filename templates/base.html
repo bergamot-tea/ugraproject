@@ -12,12 +12,15 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/pricing/">
 
     <!-- Bootstrap core CSS -->
-<link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link href="/docs/4.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   <!-- Custom Fonts -->
   <link href="{% static "vendor/fontawesome-free/css/all.min.css"%}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="{% static "vendor/simple-line-icons/css/simple-line-icons.css"%}" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css">
+
 
     <style>
       .bd-placeholder-img {
@@ -83,7 +86,9 @@
   </footer>
 
 
+{% block scripts %}
+{% endblock %}
 
-</div>
+
 </body>
 </html>
