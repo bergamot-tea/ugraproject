@@ -1,3 +1,5 @@
 from django.shortcuts import render
+from .models import Project
 
-# Create your views here.
+def summary_view(request):
+    return render(request, 'summary.html', {'project': Project.objects.all()})

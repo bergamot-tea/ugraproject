@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from .forms import UserLoginForm
 
 
+
 def home_view(request):
     return render(request, 'index.html')
 
