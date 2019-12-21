@@ -12,7 +12,7 @@
 
 
 
- <div class="table-responsive align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+
 
 
 
@@ -27,7 +27,6 @@
   data-show-button-icons="true"
   data-show-pagination-switch="true"
   data-show-fullscreen="true"
-  data-show-print="true"
   data-cache="false"
   data-page-list="[10, 25, 50, 100, all]"
   data-page-size="25"
@@ -50,13 +49,13 @@
           <tbody>
 
 
-{% for i in project %}
+{% for i in member %}
     <tr>
         <td>{{ i.id }}</td>
-        <td>{{ i.name }}</td>
-        <td>{{ i.portfolio }}</td>
-        <td>{{ i.code }}</td>
-        <td>{{ i.need_update_passport }}</td>
+        <td> <a href={{ i.id }}>{{ i.fio }}</a></td>
+        <td>{{ i.fio_full }}</td>
+        <td>{{ i.job }}</td>
+        <td>{{ i.post }}</td>
 
     </tr>
 {% endfor %}
@@ -68,7 +67,6 @@
 
  <samp>Для вывода на печать нажмите </samp> <kbd><kbd>ctrl</kbd> + <kbd>P</kbd></kbd>
 
-      </div>
 
 
 {% endblock %}
@@ -82,7 +80,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
     <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table-locale-all.min.js"></script>
-    <script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/print/bootstrap-table-print.min.js"></script>
 
 
 <script>
