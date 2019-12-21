@@ -6,50 +6,45 @@ from django.db import models
 
 class Member(models.Model):
 
-    id = models.AutoField(primary_key=True)
-    fio = models.CharField(max_length=255, blank=True)
-    fio_full = models.CharField(max_length=255, blank=True)
-    job = models.CharField(max_length=255, blank=True)
-    address = models.CharField(max_length=255, blank=True)
-    tell = models.IntegerField(null=True, blank=True)
-    email = models.CharField(max_length=255, blank=True)
+    fio = models.CharField(max_length=255)
+    fio_full = models.CharField(max_length=255)
+    job = models.CharField(max_length=255)
+    post = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    tell = models.IntegerField(blank=True, null=True)
+    email = models.CharField(max_length=255)
 
 
 class Project(models.Model):
 
     PORTFOLIOS = (
-        ('DEMO', 'Демография'),
-        ('ZDRV', 'Здравоохранение'),
-        ('OBR', 'Образование'),
-        ('ZGS', 'Жилье и городская среда'),
-        ('BKAD', 'Безопасные и качественные автомобильные дороги'),
-        ('CIF', 'Цифровая экономика'),
-        ('MEZD', 'Международная кооперация и экспорт'),
-        ('TRUD', 'Производительность труда и поддержка занятости'),
-        ('MSP', 'Малое и среднее предпринимательство'),
-        ('ECO', 'Экология'),
-        ('CULT', 'Культура'),
+        ('1','Демография'),
+        ('2','Здравоохранение'),
+        ('3','Образование'),
+        ('4','Жилье и городская среда'),
+        ('5','Безопасные и качественные автомобильные дороги'),
+        ('6','Цифровая экономика'),
+        ('7','Международная кооперация и экспорт'),
+        ('8','Производительность труда и поддержка занятости'),
+        ('9','Малое и среднее предпринимательство'),
+        ('10','Экология'),
+        ('11','Культура'),
     )
 
-    NUM = (
-        ('0', 'Нет'),
-        ('1', 'Да'),
-        ('2', 'Необходимо уточнение'),
+    ANSWER = (
+        ('1','Да'),
+        ('2','Нет'),
+        ('3','Неизвестно'),
 
     )
 
-    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
-    portfolio = models.CharField(max_length=4, choices=PORTFOLIOS, null=True, blank=True)
-    code = models.CharField(max_length=3, null=True, blank=True)
-    id_director = models.ManyToManyField(Member)
-    id_administrator = models.ManyToManyField(Member)
-    id_curator = models.ManyToManyField(Member)
-    id_mentor = models.ManyToManyField(Member)
-    id_support = models.ManyToManyField(Member)
-    id_worker = models.ManyToManyField(Member)
-    date_pasport = models.DateField()
-    need_update = models.CharField(max_length=1, choices=NUM, blank=True)
-    comment = models.CharField(max_length=255, blank=True)
+    portfolio = models.CharField(max_length=4)
+    code = models.CharField(max_length=3)
+    date_change_status = models.DateField()
+    comment = models.CharField(max_length=255)
+    administrator = models.CharField(max_length=30)
+    critical_error = models.CharField(max_length=30)
+    curator = models.CharField(max_length=30)
 
 
