@@ -50,8 +50,10 @@
 
 
 {% for i in project %}
-    <tr>
-        <td>{{ i.id }}</td>
+
+
+    <tr {% if i.id == 2 %}class="table-danger"{% endif %}>
+        <td {% if i.id == 1 %}class="table-warning"{% endif %}>{{ i.id }}</td>
         <td> <a href={{ i.id }}>{{ i.name }}</a></td>
         <td>{{ i.portfolio }}</td>
         <td>{{ i.code }}</td>
