@@ -90,6 +90,7 @@ class Report(models.Model):
     sending_date = models.DateField(blank=True)
     approval_date = models.DateField(blank=True)
     date_change_status = models.DateField(blank=True)
+    comment = models.CharField(max_length=255, blank=True)
 
 
 
