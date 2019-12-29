@@ -54,7 +54,7 @@
         <td> {{ report.id }}</td>
         <td>{{ report.project }}</td>
         <td>{{ report.year }}</td>
-        <td>{{ report.file }}</td>
+        <td><a href={{report.file.url}} target="_blank"><i class="fas fa-file-pdf"></i></a></td>
         <td>{{ report.sending_date }}</td>
 
     </tr>
