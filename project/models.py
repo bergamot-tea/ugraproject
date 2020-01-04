@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -93,5 +94,13 @@ class Report(models.Model):
     comment = models.CharField(max_length=255, blank=True)
 
 
-
+class Chat(models.Model):
+    project = models.ForeignKey(Project, on_delete=models.SET('проект удален'))
+    author = models.ForeignKey(User, on_delete=models.SET('пользователь удален'))
+    date_post = models.DateField(auto_now_add=True, blank=True)
+    text = models.TextField(blank=True)
+    image1 = models.ImageField(upload_to='screens/%Y/%m/%d', blank=True)
+    image2 = models.ImageField(upload_to='screens/%Y/%m/%d', blank=True)
+    image3 = models.ImageField(upload_to='screens/%Y/%m/%d', blank=True)
+    file1 = models.FileField(upload_to='files/%Y/%m/%d', blank=True)
 

@@ -32,6 +32,7 @@ ALLOWED_HOSTS = [u'ugraproject.pythonanywhere.com']
 
 INSTALLED_APPS = [
     'project.apps.ProjectConfig',
+    'issue.apps.IssueConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
