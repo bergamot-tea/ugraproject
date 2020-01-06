@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Project, Member, Report
+from .models import Project, Member, Report, Chat
 from django.views.generic.detail import DetailView
 
 def summary_project_view(request):
@@ -7,8 +7,14 @@ def summary_project_view(request):
 
 class ProjectDetailView(DetailView):
     queryset = Project.objects.all()
-    context_object_name = 'object'
+    context_object_name = 'project'
     template_name = 'project.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        chat_no_sorted = Chat.objects.all()
+        chat_sorted = chat_no_sorted.order_by('-date_post')
+        context['chat'] = chat_sorted
+        return context
 
 def summary_member_view(request):
     return render(request, 'summary_member.html', {'member': Member.objects.all()})
