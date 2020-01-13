@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+
+
+
+
+
+{% block content %}
+
+
+<div class="container">
+    <div class="content-section-heading">
+        <h2 class="mb-3" >Чат проекта:&nbsp
+        <span class="text-muted">{{ project }}</span>
+        </h2>
+    </div>
+</div>
+
+
+<div class="card border-primary mb-3">
+
+  <div class="card-body">
+
+{% for i in chat %}
+        {{ i.date_post }}&nbsp
+        {{ i.author }}: &nbsp
+        {{ i.text }}<br>
+        {{ i.file1 }}
+        {{ i.image1 }}
+        {{ i.image2 }}
+        {{ i.image3 }}<br>
+{% endfor %}
+
+  </div>
+ </div>
+
+
+  <form class="form-group align-items-center" method="post" action="">
+            {% csrf_token %}
+
+            <h6>Сообщение:</h6>
+            {{ form.text }}
+            <br>
+            <h6>Файлы:</h6>
+            {{ form.file1 }}
+            <br><br>
+            <input type="submit" class="btn btn-primary" value="Отправить">
+        </form>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
