@@ -52,11 +52,11 @@
 {% for i in issue %}
 
 
-    <tr {% if i.status == 3 %}class="table-success"{% endif %}>
+    <tr {% if i.status == 1 %}class="table-success"{% endif %}>
         <td>{{ i.id }}</td>
         <td> <a href={{ i.id }}>{{ i.title }}</a></td>
-        <td>{{ i.data_open }}</td>
-        <td>{{ i.autor }}</td>
+        <td>{{ i.time_open }}</td>
+        <td>{{ i.author }}</td>
         <td>{{ i.status }}</td>
 
     </tr>

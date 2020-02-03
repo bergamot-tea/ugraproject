@@ -29,7 +29,6 @@ def project_chat_view(request, pk):
             message.author = request.user
             message.project = project
             message.save()
-
     else:
         form = ChatForm()
     return render(request, 'project_chat.html', {'form': form, 'chat': chat, 'project': project.name})
