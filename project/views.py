@@ -25,10 +25,11 @@ def project_chat_view(request, pk):
     form = ChatForm(request.POST or None)
     if request.method == "POST":
         if form.is_valid():
-            message = form.save(commit=False)
-            message.author = request.user
-            message.project = project
-            message.save()
+            new_message = form.save(commit=False)
+            new_message.author = request.user
+            new_message.project = project
+            new_message.save()
+            return redirect ('/project/%d/chat' % pk)
     else:
         form = ChatForm()
     return render(request, 'project_chat.html', {'form': form, 'chat': chat, 'project': project.name})

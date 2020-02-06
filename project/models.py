@@ -17,37 +17,30 @@ class Member(models.Model):
 
 class Project(models.Model):
 
-    PORTFOLIOS = (
-        ('1','Демография'),
-        ('2','Здравоохранение'),
-        ('3','Образование'),
-        ('4','Жилье и городская среда'),
-        ('5','Безопасные и качественные автомобильные дороги'),
-        ('6','Цифровая экономика'),
-        ('7','Международная кооперация и экспорт'),
-        ('8','Производительность труда и поддержка занятости'),
-        ('9','Малое и среднее предпринимательство'),
-        ('10','Экология'),
-        ('11','Культура'),
-    )
-
-    ANSWER = (
-        ('1','Да'),
-        ('2','Нет'),
-        ('3','Неизвестно'),
-
-    )
+#    PORTFOLIOS = (
+#        ('1','Демография'),
+#        ('2','Здравоохранение'),
+#        ('3','Образование'),
+#        ('4','Жилье и городская среда'),
+#        ('5','Безопасные и качественные автомобильные дороги'),
+#        ('6','Цифровая экономика'),
+#        ('7','Международная кооперация и экспорт'),
+#        ('8','Производительность труда и поддержка занятости'),
+#        ('9','Малое и среднее предпринимательство'),
+#        ('10','Экология'),
+#        ('11','Культура'),
+#    )
 
     name = models.CharField(max_length=255)
-    portfolio = models.CharField(max_length=4, blank=True)
-    code = models.CharField(max_length=4, blank=True)
-    date_change_status = models.DateField(blank=True)
-    comment = models.CharField(max_length=255, blank=True)
-    administrator = models.CharField(max_length=30, blank=True)
-    critical_error = models.CharField(max_length=30, blank=True)
-    curator = models.CharField(max_length=30, blank=True)
-
-
+    portfolio = models.CharField(max_length=255, blank=True)
+    code = models.CharField(max_length=10, blank=True)
+    time_change = models.DateTimeField(auto_now=True, blank=True)
+    administrator = models.CharField(max_length=255, blank=True)
+    director = models.CharField(max_length=255, blank=True)
+    curator = models.CharField(max_length=255, blank=True)
+    need_zi = models.CharField(max_length=15, blank=True)
+    need_sogl = models.CharField(max_length=15, blank=True)
+    bad_finance = models.CharField(max_length=15, blank=True)
 
 class Report(models.Model):
     ANSWER = (
