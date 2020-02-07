@@ -15,13 +15,13 @@ class ProjectDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         chat_no_sorted = Chat.objects.all()
-        chat_sorted = chat_no_sorted.order_by('-date_post')
+        chat_sorted = chat_no_sorted.order_by('-time')
         context['chat'] = chat_sorted
         return context
 
 def project_chat_view(request, pk):
     project = Project.objects.get(id=pk)
-    chat = Chat.objects.filter(project=pk).order_by('-date_post')
+    chat = Chat.objects.filter(project=pk).order_by('-time')
     form = ChatForm(request.POST or None)
     if request.method == "POST":
         if form.is_valid():

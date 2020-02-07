@@ -32,21 +32,23 @@
         </h5>
     </div>
     <div class="col">
-        <h6 >Дата последнего изменения карточки проекта:&nbsp<br>
-        <span class="text-muted">{{ project.date_change_status }}</span>
+        <h6 >Ответственный за актуальность карточки проекта:&nbsp<br>
+        <span class="text-muted">{{ project.auditor }}</span>
         </h6>
-        <h6 >Автор изменений:&nbsp<br>
-        <span class="text-muted">"имя пользователя"</span>
+        <h6 >Дата последнего изменения карточки проекта:&nbsp<br>
+        <span class="text-muted">{{ project.time_change }}</span>
         </h6>
     </div>
 
     <div class="col">
         <div class="card border-dark mb-3" >
              <div class="card-body text-dark">
-                <h5 class="card-title">Команда</h5>
+                <h5 class="card-title"><i class="fas fa-users"></i> &nbsp Команда</h5>
                     <p class="card-text">
                 Куратор:&nbsp{{ project.curator }} <br>
+                Руководитель:&nbsp{{ project.director }} <br>
                 Администратор:&nbsp{{ project.administrator }} <br>
+
                     </p>
              </div>
         </div>
@@ -55,29 +57,40 @@
     <div class="col">
         <div class="card border-dark mb-3" >
              <div class="card-body text-dark">
-                <h5 class="card-title">Комментарий Деппроектов Югры</h5>
-                    <p class="card-text">
-                        {{ project.comment }}
-                    </p>
+
+                <h5 class="card-title"><i class="fas fa-heartbeat"></i> &nbsp Здоровье паспорта</h5>
+                Необходим запрос на изменение:&nbsp
+                    {% if project.need_zi == "Да" %}<span class="badge badge-danger">Да</span>{% endif %}
+                    {% if project.need_zi == "Нет" %}<span class="badge badge-success">Нет</span>{% endif %}
+                <br>
+                Необходимо заключение дополнительного соглашения:&nbsp
+                    {% if project.need_sogl == "Да" %}<span class="badge badge-danger">Да</span>{% endif %}
+                    {% if project.need_sogl == "Нет" %}<span class="badge badge-success">Нет</span>{% endif %}
+                <br>
+                Проблема с разделом "Финансовое обеспечение":&nbsp
+                    {% if project.bad_finance == "Да" %}<span class="badge badge-danger">Да</span>{% endif %}
+                    {% if project.bad_finance == "Нет" %}<span class="badge badge-success">Нет</span>{% endif %}
+                    {% if project.bad_finance != "Нет" and project.bad_finance != "Да"%}<span class="badge badge-secondary">Идет анализ</span>{% endif %}
+                <br>
              </div>
         </div>
     </div>
 
     <div class="col">
 <div class="card border-primary mb-3">
-  <div class="card-header bg-transparent border-primary"><h5 class="card-title">Последние сообщения в чате проекта</h5></div>
+  <div class="card-header bg-transparent border-primary"><h5 class="card-title"><i class="fas fa-comments"></i> &nbsp Последние сообщения в чате проекта</h5></div>
   <div class="card-body">
 
 {% for i in chat %}
     {% if i.project == project %}
 
-        {{ i.date_post }}&nbsp
+        {{ i.time }}&nbsp
         {{ i.author }}: &nbsp
         {{ i.text }}<br>
         {{ i.file1 }}
-        {{ i.image1 }}
-        {{ i.image2 }}
-        {{ i.image3 }}<br><br>
+        {{ i.file2 }}
+        {{ i.file3 }}
+        <br><br>
     {% endif %}
 {% endfor %}
 
@@ -91,7 +104,25 @@
     </div>
 
 
-    <div class="col">Column</div>
+
+
+
+   <div class="col">
+<div class="card border-primary mb-3">
+  <div class="card-header bg-transparent border-primary"><h5 class="card-title"><i class="fas fa-file-contract"></i> &nbsp Отчетность</h5></div>
+  <div class="card-body">
+\\Список отчетов
+  </div>
+  <div class="card-footer bg-transparent border-primary">
+
+      <a href="" class="btn btn-primary">Перейти к отчетам</a>
+
+</div>
+</div>
+    </div>
+
+
+
 
   </div>
 </div>
@@ -100,21 +131,6 @@
 
  <samp>Для вывода на печать нажмите </samp> <kbd><kbd>ctrl</kbd> + <kbd>P</kbd></kbd>
 
-<!--
-  <form class="form-group align-items-center" method="post" action=".">
-            {% csrf_token %}
-            <h6>Сообщение:</h6>
-            {{ chat_form.text }}
-            <br>
-            <h6>Файлы:</h6>
-            {{ chat_form.file1 }}
-            <br>
-             <h6>Скриншот:</h6>
-            {{ chat_form.image1 }}
-            <br>
-            <input type="submit" class="btn btn-primary" value="Отправить">
-        </form>
--->
 
 {% endblock %}
 

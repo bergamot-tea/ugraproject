@@ -38,16 +38,16 @@ class Project(models.Model):
     administrator = models.CharField(max_length=255, blank=True)
     director = models.CharField(max_length=255, blank=True)
     curator = models.CharField(max_length=255, blank=True)
+    auditor = models.CharField(max_length=255, blank=True)
     need_zi = models.CharField(max_length=15, blank=True)
     need_sogl = models.CharField(max_length=15, blank=True)
     bad_finance = models.CharField(max_length=15, blank=True)
 
+
 class Report(models.Model):
     ANSWER = (
         (1,'Да'),
-        (2,'Нет'),
-        (3,'Неизвестно'),
-
+        (0,'Нет'),
     )
 
     MONTHS = (
@@ -81,19 +81,18 @@ class Report(models.Model):
     approval = models.IntegerField(blank=True, choices=ANSWER)
     expired = models.IntegerField(blank=True, choices=ANSWER)
     correct = models.IntegerField(blank=True, choices=ANSWER)
-    sending_date = models.DateField(blank=True)
     approval_date = models.DateField(blank=True)
-    date_change_status = models.DateField(blank=True)
-    comment = models.CharField(max_length=255, blank=True)
+    time_change = models.DateTimeField(auto_now=True, blank=True)
+    comment = models.CharField(max_length=1024, blank=True)
 
 
 class Chat(models.Model):
     project = models.ForeignKey(Project, on_delete=models.SET('проект удален'))
     author = models.ForeignKey(User, on_delete=models.SET('пользователь удален'))
-    date_post = models.DateField(auto_now_add=True, blank=True)
+    time = models.DateTimeField(auto_now_add=True, blank=True)
+    time_change = models.DateTimeField(auto_now=True, blank=True)
     text = models.TextField(blank=True)
-    image1 = models.ImageField(upload_to='screens/%Y/%m/%d', blank=True)
-    image2 = models.ImageField(upload_to='screens/%Y/%m/%d', blank=True)
-    image3 = models.ImageField(upload_to='screens/%Y/%m/%d', blank=True)
     file1 = models.FileField(upload_to='files/%Y/%m/%d', blank=True)
+    file2 = models.FileField(upload_to='files/%Y/%m/%d', blank=True)
+    file3 = models.FileField(upload_to='files/%Y/%m/%d', blank=True)
 
