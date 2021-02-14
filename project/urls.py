@@ -3,6 +3,7 @@ from . views import summary_project_view, ProjectDetailView
 from . views import summary_member_view, MemberDetailView
 from . views import summary_report_view, ReportDetailView
 from . views import project_chat_view
+from . views import summary_opendata_view, project_opendata_view
 
 app_name = 'project'
 
@@ -15,5 +16,6 @@ urlpatterns = [
     path('member/<int:pk>/', MemberDetailView.as_view(), name='member'),
     path('report/', summary_report_view, name='summary_report_page'),
     path('report/<int:pk>/', ReportDetailView.as_view(), name='report'),
-
+    path('opendata/', summary_opendata_view, name='summary_opendata_page'),
+    path('opendata/<fed_project>/', project_opendata_view, name='project_opendata_page'),
 ]

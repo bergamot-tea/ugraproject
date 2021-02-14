@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .models import Project, Member, Report, Chat
 from django.views.generic.detail import DetailView
 from .forms import ChatForm
+import requests, json
 
 
 def summary_project_view(request):
@@ -50,3 +51,40 @@ class ReportDetailView(DetailView):
     queryset = Report.objects.all()
     context_object_name = 'report'
     template_name = 'report.html'
+
+def summary_opendata_view(request):
+    return render(request, 'summary_opendata.html')
+
+def project_opendata_view(request, fed_project):
+#    get_project_json = requests.get('http://budget.gov.ru/epbs/registry/7710168360-REGIONALPROJECT/data?filtersubject.code=86&filterfpcode=' + fed_project)
+    header = {
+                'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Accept-Encoding':'gzip, deflate',
+                'Accept-Language':'ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3',
+                'Connection':'keep-alive',
+                'Host':'budget.gov.ru',
+                'Upgrade-Insecure-Requests':'1',
+                'User-Agent':'Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:74.0) Gecko/20100101 Firefox/74.0'
+                }
+
+    proxi = {
+                 'http': '154.16.202.22:8080'
+                }
+
+    url = 'http://budget.gov.ru/epbs/registry/7710168360-REGIONALPROJECT/data?filtersubject.code=86&filterfpcode=F1'
+    get_project_json = requests.get(url, headers=header, proxies=proxi)
+
+#    get_project_json_text = json.loads(get_project_json.text)
+    get_project_json_text = get_project_json
+#    code = get_project_json_text['data']['0']['code']
+#    fullname = get_project_json_text['data']['0']['fullname']
+#    curator = get_project_json_text['data']['0']['curator']
+#    person = get_project_json_text['data']['0']['person']
+#    kvsr = get_project_json_text['data']['0']['kvsr']
+#    return render(request, 'project_opendata.html', {'code': code, 'fullname': fullname, 'curator': curator, 'person': person, 'kvsr': kvsr})
+
+    return render(request, 'project_opendata.html', {'get_project_json_text': get_project_json_text})
+
+
+
+
