@@ -1,4 +1,5 @@
 # http://ugraproject.pythonanywhere.com/
+# Django-проект(Python)
 
 Нулевой проект (проект не закончен, пропала необходимость).
 
